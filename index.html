@@ -1,385 +1,136 @@
 
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#12121c">
-  <title>Wspieramy Wiktora ❤️🏳️‍🌈</title>
+/* 🌌 Pulsujące światło tła */
+body::before {
+  animation: backgroundGlow 10s ease-in-out infinite alternate;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+@keyframes backgroundGlow {
+  0% {
+    transform: scale(1);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: scale(1.12);
+    filter: hue-rotate(35deg);
+  }
+}
 
-    :root {
-      color-scheme: dark;
-    }
+/* 🌈 Unosząca się tęcza */
+.rainbow {
+  animation: rainbowFloat 3s ease-in-out infinite,
+             rainbowGlow 2s ease-in-out infinite alternate;
+}
 
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-      background: #101018;
-      overflow-x: hidden;
-    }
+@keyframes rainbowFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 10% 15%, #ff4b6e30, transparent 30%),
-        radial-gradient(circle at 90% 85%, #8b5cf630, transparent 30%),
-        radial-gradient(circle at 80% 10%, #22d3ee20, transparent 25%);
-    }
+@keyframes rainbowGlow {
+  from {
+    filter: drop-shadow(0 0 8px #ff77a855);
+  }
+  to {
+    filter: drop-shadow(0 0 28px #ff77a8cc);
+  }
+}
 
-    header {
-      padding: 22px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      border-bottom: 1px solid #ffffff14;
-      background: #101018bb;
-      backdrop-filter: blur(12px);
-    }
+/* ✨ Ruchomy gradient tytułu */
+h1 {
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+}
 
-    .logo {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    .logo span {
-      color: #ff77a8;
-    }
+/* 💗 Delikatnie świecąca ramka */
+.panel {
+  animation: fadeUp 0.9s ease both,
+             panelGlow 6s ease-in-out infinite;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
 
-    .header-label {
-      color: #c7c7d8;
-      font-size: 13px;
-    }
+.panel:hover {
+  transform: translateY(-5px);
+  border-color: #ff77a877;
+}
 
-    main {
-      width: min(900px, 100%);
-      margin: auto;
-      padding: 70px 22px;
-    }
+@keyframes panelGlow {
+  0%, 100% {
+    box-shadow: 0 24px 65px #0003;
+  }
+  50% {
+    box-shadow: 0 24px 65px #ff77a81c;
+  }
+}
 
-    .hero {
-      text-align: center;
-      margin-bottom: 38px;
-      animation: fadeUp 0.8s ease both;
-    }
+/* 🎴 Kafelki pojawiają się po kolei */
+.value {
+  animation: cardAppear 0.7s ease both;
+}
 
-    .rainbow {
-      font-size: 64px;
-      margin-bottom: 22px;
-      filter: drop-shadow(0 0 22px #ff77a855);
-    }
+.value:nth-child(1) { animation-delay: 0.1s; }
+.value:nth-child(2) { animation-delay: 0.25s; }
+.value:nth-child(3) { animation-delay: 0.4s; }
+.value:nth-child(4) { animation-delay: 0.55s; }
 
-    h1 {
-      font-size: clamp(34px, 7vw, 62px);
-      line-height: 1.12;
-      margin-bottom: 22px;
-      background: linear-gradient(
-        90deg,
-        #ff647c,
-        #ffb86c,
-        #ffe66d,
-        #65e6a7,
-        #68c9ff,
-        #c59aff
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
-    .subtitle {
-      max-width: 650px;
-      margin: auto;
-      color: #c9c9d9;
-      font-size: 18px;
-      line-height: 1.8;
-    }
+/* ❤️ Pulsujący cytat */
+.message {
+  animation: messagePulse 4s ease-in-out infinite;
+}
 
-    .panel {
-      padding: clamp(24px, 5vw, 45px);
-      border: 1px solid #ffffff1c;
-      border-radius: 24px;
-      background: #ffffff08;
-      box-shadow: 0 24px 80px #0003;
-      animation: fadeUp 0.9s ease both;
-    }
+@keyframes messagePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 #ff77a800;
+  }
+  50% {
+    box-shadow: 0 0 24px #ff77a822;
+  }
+}
 
-    .panel h2 {
-      font-size: 27px;
-      margin-bottom: 20px;
-      color: #ff9ab9;
-    }
+/* 🌈 Animowana tęczowa linia */
+.rainbow-line {
+  background-size: 300% 100%;
+  animation: rainbowLineMove 4s linear infinite;
+}
 
-    .panel p {
-      color: #dedee9;
-      font-size: 16px;
-      line-height: 1.9;
-      margin-bottom: 20px;
-    }
+@keyframes rainbowLineMove {
+  from { background-position: 0% 50%; }
+  to { background-position: 300% 50%; }
+}
 
-    .panel strong {
-      color: #fff;
-    }
+/* ✨ Płynne pojawienie stopki */
+footer {
+  animation: footerAppear 1.5s ease both;
+}
 
-    .message {
-      margin: 28px 0;
-      padding: 23px;
-      border-left: 4px solid #ff77a8;
-      border-radius: 0 14px 14px 0;
-      background: #ff77a80d;
-      color: #fff;
-      font-size: 19px;
-      line-height: 1.7;
-    }
+@keyframes footerAppear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    .values-title {
-      text-align: center;
-      font-size: 28px;
-      margin: 45px 0 22px;
-    }
-
-    .values {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 15px;
-    }
-
-    .value {
-      padding: 22px;
-      border: 1px solid #ffffff16;
-      border-radius: 18px;
-      background: #ffffff08;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .value:hover {
-      transform: translateY(-4px);
-      background: #ffffff12;
-    }
-
-    .value .emoji {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    .value h3 {
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-
-    .value p {
-      color: #bdbdce;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .final-message {
-      text-align: center;
-      margin-top: 45px;
-      padding: 32px 15px;
-    }
-
-    .final-message h2 {
-      font-size: clamp(25px, 5vw, 36px);
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-
-    .final-message p {
-      color: #c9c9d9;
-      line-height: 1.8;
-    }
-
-    .rainbow-line {
-      height: 5px;
-      width: 160px;
-      margin: 25px auto;
-      border-radius: 10px;
-      background: linear-gradient(
-        90deg,
-        #ff5757,
-        #ffad4d,
-        #ffe45c,
-        #50dc90,
-        #51baff,
-        #a875ff
-      );
-    }
-
-    footer {
-      padding: 25px 15px;
-      text-align: center;
-      color: #85859b;
-      font-size: 13px;
-      border-top: 1px solid #ffffff12;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(22px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 560px) {
-      header {
-        padding: 18px;
-      }
-
-      .header-label {
-        display: none;
-      }
-
-      main {
-        padding: 45px 16px;
-      }
-
-      .values {
-        grid-template-columns: 1fr;
-      }
-
-      .rainbow {
-        font-size: 52px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="logo">❤️ Wspieramy <span>Wiktora</span></div>
-    <div class="header-label">Szacunek • Akceptacja • Przyjaźń</div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="rainbow">🏳️‍🌈</div>
-
-      <h1>Jesteśmy z Tobą, Wiktor!</h1>
-
-      <p class="subtitle">
-        Każdy zasługuje na szacunek, akceptację i możliwość
-        bycia sobą. Razem możemy sprawić, że będzie więcej
-        życzliwości, a mniej nienawiści. ❤️
-      </p>
-    </section>
-
-    <section class="panel">
-      <h2>❤️ Wiktor, możesz liczyć na wsparcie!</h2>
-
-      <p>
-        Chcemy pokazać, że <strong>Wiktor Skowroński może
-        liczyć na życzliwość i wsparcie.</strong> Każdy
-        człowiek zasługuje na szacunek, niezależnie od tego,
-        kim jest, kogo kocha i jaką drogę wybiera w życiu.
-      </p>
-
-      <p>
-        Nie powinno być miejsca na hejt, wyśmiewanie ani
-        obrażanie innych. Różnimy się od siebie, ale każdy
-        z nas ma uczucia, marzenia i prawo do szczęścia.
-      </p>
-
-      <div class="message">
-        „Wiktor, pamiętaj, że masz prawo być sobą.
-        Nie pozwól, aby negatywne komentarze odbierały Ci
-        pewność siebie. Zasługujesz na szacunek, przyjaźń
-        i życzliwość — tak samo jak każdy z nas!” 💖
-      </div>
-
-      <p>
-        To, co naprawdę się liczy, to charakter, serce
-        i sposób, w jaki traktujemy innych ludzi. Nie musimy
-        być tacy sami, żeby okazywać sobie wsparcie.
-      </p>
-
-      <p>
-        Warto stawać po stronie osób, które spotykają się
-        z niesprawiedliwym traktowaniem. Czasem jedno miłe
-        słowo, zwykła rozmowa lub okazanie zrozumienia
-        mogą znaczyć naprawdę wiele.
-      </p>
-
-      <p>
-        <strong>Szanujmy się nawzajem, reagujmy na hejt
-        i pamiętajmy, że każdy zasługuje na godne traktowanie.</strong>
-      </p>
-    </section>
-
-    <h2 class="values-title">🌈 Nasze przesłanie</h2>
-
-    <section class="values">
-      <article class="value">
-        <div class="emoji">🤝</div>
-        <h3>Wzajemny szacunek</h3>
-        <p>Traktujmy innych tak, jak sami chcielibyśmy być traktowani.</p>
-      </article>
-
-      <article class="value">
-        <div class="emoji">❤️</div>
-        <h3>Więcej życzliwości</h3>
-        <p>Jedno dobre słowo może poprawić komuś cały dzień.</p>
-      </article>
-
-      <article class="value">
-        <div class="emoji">🫶</div>
-        <h3>Wsparcie i przyjaźń</h3>
-        <p>Nie zostawiajmy innych samych, gdy potrzebują rozmowy.</p>
-      </article>
-
-      <article class="value">
-        <div class="emoji">✊</div>
-        <h3>Stop hejtowi</h3>
-        <p>Nie zgadzajmy się na poniżanie, wyśmiewanie i nienawiść.</p>
-      </article>
-    </section>
-
-    <section class="final-message">
-      <h2>
-        🏳️‍🌈 STOP HEJTOWI!<br>
-        ❤️ WIĘCEJ MIŁOŚCI, MNIEJ NIENAWIŚCI!
-      </h2>
-
-      <div class="rainbow-line"></div>
-
-      <p>
-        Wiktor, trzymaj się i pamiętaj, że zasługujesz na
-        szacunek i życzliwość. Niech dobro zawsze będzie
-        silniejsze od nienawiści! 💖
-      </p>
-
-      <p style="margin-top: 18px; font-weight: bold;">
-        LOVE IS LOVE • SZACUNEK DLA KAŻDEGO 🌈
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    Strona o przyjaźni, akceptacji i wzajemnym szacunku ❤️
-  </footer>
-</body>
-</html>
+/* ♿ Ograniczenie animacji na życzenie użytkownika */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
