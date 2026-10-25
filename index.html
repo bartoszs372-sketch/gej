@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miłość to miłość 🏳️‍🌈</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at top left, #7038bd55, transparent 40%),
+        radial-gradient(circle at bottom right, #ff408155, transparent 40%),
+        #10101a;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 700px;
+      padding: 48px 28px;
+      text-align: center;
+      background: #ffffff0d;
+      border: 1px solid #ffffff24;
+      border-radius: 24px;
+      box-shadow: 0 20px 70px #0005;
+      animation: appear 0.8s ease;
+    }
+
+    .flag {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 7vw, 54px);
+      margin-bottom: 18px;
+      background: linear-gradient(
+        90deg, #ff5555, #ffb347, #ffee55,
+        #55dd88, #55bbff, #bd77ff
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    p {
+      color: #d4d4e4;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #ff5b93, #a855f7);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px #a855f755;
+    }
+
+    footer {
+      margin-top: 30px;
+      color: #88889d;
+      font-size: 13px;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="flag">🏳️‍🌈</div>
+    <h1>Miłość to miłość</h1>
+
+    <p>
+      Każdy zasługuje na szacunek, akceptację i możliwość
+      bycia sobą. Nie oceniajmy ludzi na podstawie plotek
+      ani nie naruszajmy ich prywatności.
+    </p>
+
+    <a class="button"
+       href="https://www.hrc.org/resources/what-is-lgbtq"
+       target="_blank"
+       rel="noopener noreferrer">
+      Dowiedz się więcej
+    </a>
+
+    <footer>
+      Szacunek • Akceptacja • Równość
+    </footer>
+  </main>
+</body>
+</html>
